@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>L-System Plants</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.9.0/dist/model-viewer.js"></script>
+</head>
+<body>
+  <div class="loader">
+    <p>Loading...</p>
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <section class="section hero">
+    <div class="hero--container">
+      <div class="hero--text">
+        <h1>L-System Plants</h1>
+        <h2>Fractal Nature</h2>
+        <p>Control iterations and view in 3D.</p>
+        <div class="model-dropdown">
+          <label for="plant-select">Choose a plant:</label>
+          <select id="plant-select">
+            <option value="3D_Model_test.glb">Default Plant</option>
+            <option value="plant2.glb">Plant Type 2</option>
+            <option value="plant3.glb">Plant Type 3</option>
+          </select>
+        </div>
+      </div>
+
+      
+      <div class="hero--model">
+        <model-viewer 
+          src="3D_Model_test.glb" 
+          alt="3D model of plant" 
+          camera-controls 
+          autoplay
+          style="width: 100%; height: 100%;">
+        </model-viewer>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      const progressBar = document.querySelector('.progress-bar');
+
+      progressBar.style.width = '0%';
+      setTimeout(() => {
+        progressBar.style.transition = 'width 2s linear';
+        progressBar.style.width = '100%';
+      }, 5);
+
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'none';
+      }, 2000);
+    });
+    
+  </script>
+</body>
+</html>
